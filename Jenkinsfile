@@ -11,8 +11,8 @@ pipeline{
     }
     stage("deploy nginx"){
       steps{
-
-        docker.image('williamyeh/ansible:centos7').inside("--network 2-cd-platform_cd-in-practice") {
+        script{
+          docker.image('williamyeh/ansible:centos7').inside("--network 2-cd-platform_cd-in-practice") {
              checkout([$class: 'GitSCM', branches: [[name: "master"]], doGenerateSubmoduleConfigurations: false,
                        extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: "env-conf"]], submoduleCfg: [],
                        userRemoteConfigs: [[url: "https://github.com/cd-in-practice/2-env-conf.git"]]])
@@ -22,6 +22,6 @@ pipeline{
                 ansible-playbook -i env-conf/dev  deploy/playbook.yml
              """
            }
-        
+        }
       }
 }}}
