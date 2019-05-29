@@ -1,5 +1,5 @@
 ---
-- host: nginx
+- hosts: nginx
   become: yes
   roles:
     - role: ansible-role-nginx
