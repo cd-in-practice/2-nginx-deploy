@@ -1,0 +1,6 @@
+---
+- host: nginx
+  become: yes
+  roles:
+    - role: ansible-role-nginx
+      vars: "{{nginx_config}}"
