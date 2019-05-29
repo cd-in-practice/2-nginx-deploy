@@ -18,7 +18,7 @@ pipeline{
                        userRemoteConfigs: [[url: "https://github.com/cd-in-practice/2-env-conf.git"]]])
              sh "ls -al"
              sh """
-                ansible-playbook --syntax-check deploy/playbook.yaml -i env-conf/dev
+                ansible-playbook --syntax-check deploy/playbook.yml -i env-conf/dev
                 ansible-playbook -i env-conf/dev  deploy/playbook.yml
              """
            }
