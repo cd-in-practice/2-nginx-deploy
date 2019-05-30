@@ -2,5 +2,6 @@
 - hosts: nginx
   become: yes
   roles:
+    - ansible-role-firewall
     - role: ansible-role-nginx
       
